@@ -1,45 +1,45 @@
-.navbar{
-    background-color: rgb(34, 82, 172);
+.navbar {
+  background-color: rgb(34, 82, 172);
 }
-.card{
-    border-radius: 10px;
+.card {
+  border-radius: 10px;
 }
-.dashboard-brand{
-    padding: 7% 0;
-    background-color:rgb(100, 69, 235) ;
-    color: #fff;
+.dashboard-brand {
+  padding: 7% 0;
+  background-color: rgb(72, 116, 198);
+  color: #fff;
 }
-.img-fluid{
-    height: 10rem;
-    width: 10rem;
+.img-fluid {
+  height: 10rem;
+  width: 10rem;
 }
-.t-buttons{
-    width: 5rem;
-    border-radius: 10px;
+.t-buttons {
+  width: 5rem;
+  border-radius: 10px;
 }
-.table{
-    border-radius: 20px;
-    overflow: hidden;
+.table {
+  border-radius: 20px;
+  overflow: hidden;
 }
-.table-head{
-    background-color:rgb(34, 82, 172) ;
-    color: #fff;
-    
+.table-head {
+  background-color: rgb(34, 82, 172);
+  color: #fff;
 }
-#products{
-    margin-top: 5rem;
+#products {
+  margin-top: 5rem;
 }
-#btn-addProduct{
-    height: 2.7rem;
-    font-weight: bold;
+#btn-addProduct {
+  height: 2.7rem;
+  font-weight: bold;
 }
-#add-form-brand{
-    background-color: rgb(34, 82, 172);
-    border-radius: 20px;
-    color: #fff;
-    padding:8% 3%;
+#add-form-brand {
+  background-color: rgb(34, 82, 172);
+  border-radius: 20px;
+  color: #fff;
+  padding: 8% 3%;
 }
-.rounded-circle{
-    height: 7rem;
-    width: 7rem;
+.rounded-circle {
+  height: 7rem;
+  width: 7rem;
+  object-fit: cover;
 }
