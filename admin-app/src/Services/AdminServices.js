@@ -8,13 +8,11 @@ class AdminServices extends GenericService {
   getRespondant = () => this.get("respondant");
   getProducts = () => this.get("products");
   getCustomers = () => this.get("customers");
-  deleteDoctor = (_id) => this.delete("doctors/" + _id);
-  deletePharmacist = (_id) => this.delete("pharmacist/" + _id);
-  deleteRespondant = (_id) => this.delete("respondant/" + _id);
+  deleteUser = (_id) => this.delete("user/" + _id);
   deleteProduct = (_id) => this.delete("products/" + _id);
-   deleteCustomer = (_id) => this.delete("customer/" + _id);
   addProduct = (data) => this.post("products", data);
   updateProduct = (_id, data) => this.put("products/" + _id, data);
+  adminLogin = (data) => this.post("login", data);
 }
 let adminServices = new AdminServices();
 export default adminServices;

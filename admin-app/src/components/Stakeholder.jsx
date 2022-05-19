@@ -1,17 +1,14 @@
 import React from "react";
 import adminServices from "../Services/AdminServices";
 import StakeholderMapper from "./StakeholderMapper";
+import alert from "../Services/Alert";
 const Stakeholder = ({ stakeholder, dataType }) => {
   function deleteData(_id) {
-    var method = () => {};
-    if (dataType == "Doctors") method = adminServices.deleteDoctor;
-    else if (dataType == "Pharmacists") method = adminServices.deletePharmacist;
-    else if (dataType == "Respondants") method = adminServices.deleteRespondant;
-    else if (dataType == "Customers") method = adminServices.deleteCustomer;
-
-    method(_id)
+    adminServices
+      .deleteUser(_id)
       .then((data) => {
-        console.log(data);
+        console.log(data.message);
+        alert.showSuccessAlert(data.message);
       })
       .catch((err) => {
         console.log(err);
@@ -31,7 +28,9 @@ const Stakeholder = ({ stakeholder, dataType }) => {
           </div>
           <div class="col-8">
             <div class="card-body">
-              <h5 class="card-title">{stakeholder.name}</h5>
+              <h5 class="card-title m-0">{stakeholder.username}</h5>
+              <p class="card-text m-0">{stakeholder.specialization}</p>
+              <p class="card-text m-0">{stakeholder.phone}</p>
               <p class="card-text">
                 <a>{stakeholder.email}</a>
               </p>

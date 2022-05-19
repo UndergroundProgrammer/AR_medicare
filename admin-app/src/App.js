@@ -15,7 +15,11 @@ function App() {
     <Router>
       <div>
         <Navbar></Navbar>
-        <ToastContainer />
+        <ToastContainer
+          autoClose={1000}
+          pauseOnHover={false}
+          pauseOnFocusLoss={false}
+        />
         <Routes>
           <Route
             path="/doctors"

@@ -1,14 +1,19 @@
 import React from "react";
 import adminServices from "../Services/AdminServices";
 import alert from "../Services/Alert";
+import convertImageToBase64 from "./ImageBase64";
+import { uploadImage } from "./ImageUpload";
+import FileUploader from "./FileUploader";
 const Products = () => {
   const [pressed, setPressed] = React.useState(false);
   const [items, setItems] = React.useState([]);
+  const [imgUrl, setImgUrl] = React.useState();
   const [TData, setTData] = React.useState({
     id: "",
     title: "",
     price: "",
     description: "",
+    img: "",
   });
   const [btnText, setBtnText] = React.useState("Add");
   function handleData(key, value) {
@@ -61,11 +66,29 @@ const Products = () => {
       id: item._id,
       title: item.title,
       price: item.price,
+      description: item.description,
     };
     setTData(data);
     setPressed(true);
     setBtnText("Update");
   }
+  const onDrop = (acceptedFiles, rejectedFiles, imgName) => {
+    if (rejectedFiles.length > 0) {
+      alert.showWarningAlert("Upload only one image and size limit of 1 MB");
+      return;
+    } else if (acceptedFiles) {
+      convertImageToBase64(acceptedFiles[0], (result, success) => {
+        if (success) {
+          uploadImage(result, (url, success) => {
+            if (success) {
+              handleData("img", `${url}`);
+              setImgUrl(acceptedFiles[0].name);
+            }
+          });
+        }
+      });
+    }
+  };
   React.useEffect(getData, []);
   return (
     <div id="products" className="container">
@@ -109,6 +132,7 @@ const Products = () => {
                     aria-describedby="emailHelp"
                     value={TData.title}
                     onChange={(e) => handleData("title", e.target.value)}
+                    required
                   />
                 </div>
                 <div class="mb-3 col-lg-9">
@@ -121,16 +145,36 @@ const Products = () => {
                     id="exampleInputPassword1"
                     value={TData.price}
                     onChange={(e) => handleData("price", e.target.value)}
+                    required
                   />
+                </div>
+                <div class="mb-3 col-lg-9">
                   <label for="exampleInputPassword1" class="form-label">
                     Medicine Description
                   </label>
                   <input
-                    type="type"
+                    type="text"
                     class="form-control"
-                    id="exampleInputPassword1"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
                     value={TData.description}
                     onChange={(e) => handleData("description", e.target.value)}
+                    required
+                  />
+                </div>
+                <div class="mb-2 col-lg-9">
+                  <label for="exampleInputPassword1" class="form-label">
+                    upload an image
+                  </label>
+                  <FileUploader
+                    placeholder={imgUrl ? imgUrl : "Click here to upload"}
+                    accept={["image/jpeg", "image/png", "image/bmp"]}
+                    maxFiles={1}
+                    maxSize={1000000}
+                    onDrop={(acceptedFiles, rejectedFiles) =>
+                      onDrop(acceptedFiles, rejectedFiles, "frontSideImage")
+                    }
+                    required
                   />
                 </div>
                 <button

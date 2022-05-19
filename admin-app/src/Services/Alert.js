@@ -11,6 +11,18 @@ class Alert {
       position: toast.POSITION.TOP_CENTER,
     });
   };
+
+  showinfoAlert = (msg) => {
+    toast.info(msg, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+
+  showWarningAlert = (msg) => {
+    toast.warning(msg, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
 }
 
 let alert = new Alert();
