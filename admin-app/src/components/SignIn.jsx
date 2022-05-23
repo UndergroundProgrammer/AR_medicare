@@ -13,12 +13,14 @@ const SignIn = () => {
   }
   function login() {
     adminServices
-      .adminLogin(data)
+      .login(data)
       .then((data) => {
-        console.log(data);
-        if (data.isAdmin) {
+        debugger
+        if (adminServices.isLoggedIn()) {
           alert.showSuccessAlert("you are logged in successfully!");
           navigate("/dashboard");
+          window.location.reload(false);
+
         } else {
           alert.showErrorAlert(data.message);
         }

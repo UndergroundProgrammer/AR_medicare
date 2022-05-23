@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import adminServices from "../Services/AdminServices";
 const Navbar = () => {
   return (
     <div>
@@ -31,16 +32,36 @@ const Navbar = () => {
                   Medicines
                 </Link>
               </li>
+             {adminServices.isLoggedIn()? <>
               <li class="nav-item">
                 <Link
                   class="nav-link active"
                   aria-current="page"
                   href="#"
                   to="/login"
+                  onClick={(e)=>{adminServices.logout()
+                  window.location.reload(false)}}
+                >
+                  logout
+                </Link>
+              </li>
+              <li class="nav-item nav-link active"
+                  aria-current="page"
+                  href="#"
+                >
+                  Hi, Ayesha
+                
+              </li></>: <li class="nav-item">
+                <Link
+                  class="nav-link active"
+                  aria-current="page"
+                  href="#"
+                  to="/login"
+
                 >
                   login
                 </Link>
-              </li>
+              </li>}
             </ul>
           </div>
         </div>

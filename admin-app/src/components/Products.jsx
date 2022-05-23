@@ -40,6 +40,12 @@ const Products = () => {
     alert.showSuccessAlert("item removed successfully!");
   }
   function addItem(data) {
+    if(!TData.img)
+    {
+      alert.showErrorAlert("Please upload image");
+      return;
+     
+    }
     adminServices
       .addProduct(data)
       .then((res) => {
