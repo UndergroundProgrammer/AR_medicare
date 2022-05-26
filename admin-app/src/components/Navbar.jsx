@@ -22,46 +22,52 @@ const Navbar = () => {
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <Link
-                  class="nav-link active"
-                  aria-current="page"
-                  href="#"
-                  to="/products"
-                >
-                  Medicines
-                </Link>
-              </li>
-             {adminServices.isLoggedIn()? <>
-              <li class="nav-item">
-                <Link
-                  class="nav-link active"
-                  aria-current="page"
-                  href="#"
-                  to="/login"
-                  onClick={(e)=>{adminServices.logout()
-                  window.location.reload(false)}}
-                >
-                  logout
-                </Link>
-              </li>
-              <li class="nav-item nav-link active"
-                  aria-current="page"
-                  href="#"
-                >
-                  Hi, Ayesha
-                
-              </li></>: <li class="nav-item">
-                <Link
-                  class="nav-link active"
-                  aria-current="page"
-                  href="#"
-                  to="/login"
-
-                >
-                  login
-                </Link>
-              </li>}
+              {adminServices.isLoggedIn() ? (
+                <>
+                  <li class="nav-item">
+                    <Link
+                      class="nav-link active"
+                      aria-current="page"
+                      href="#"
+                      to="/products"
+                    >
+                      Medicines
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                    <Link
+                      class="nav-link active"
+                      aria-current="page"
+                      href="#"
+                      to="/login"
+                      onClick={(e) => {
+                        adminServices.logout();
+                        window.location.reload(false);
+                      }}
+                    >
+                      logout
+                    </Link>
+                  </li>
+                  <li
+                    class="nav-item nav-link active"
+                    aria-current="page"
+                    href="#"
+                  >
+                    Hi, Ayesha
+                  </li>
+                </>
+              ) : (
+                <li class="nav-item">
+                  <Link
+                    class="nav-link active"
+                    aria-current="page"
+                    href="#"
+                    to="/login"
+                  >
+                    login
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

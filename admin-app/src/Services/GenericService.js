@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:3000/api/admin/";
+axios.defaults.baseURL = "https://ar-medicare-backend.herokuapp.com/api/admin/";
 axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("accessToken");
 
 class GenericService {
