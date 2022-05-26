@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import adminServices from "../Services/AdminServices";
 const Navbar = () => {
+  const [isloggedIn,setIsLoggedIn]=React.useState(adminServices.isLoggedIn());
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top  ">
@@ -22,7 +23,7 @@ const Navbar = () => {
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              {adminServices.isLoggedIn() ? (
+              {isloggedIn? (
                 <>
                   <li class="nav-item">
                     <Link
@@ -42,7 +43,7 @@ const Navbar = () => {
                       to="/login"
                       onClick={(e) => {
                         adminServices.logout();
-                        window.location.reload(false);
+                        setIsLoggedIn(false);
                       }}
                     >
                       logout
