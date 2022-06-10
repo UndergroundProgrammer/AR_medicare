@@ -43,3 +43,10 @@
   width: 7rem;
   object-fit: cover;
 }
+
+#imageuploader {
+  overflow: hidden;
+}
+#imageuploader:hover {
+  cursor: pointer;
+}

@@ -12,6 +12,7 @@ const Products = () => {
     id: "",
     title: "",
     price: "",
+    quantity: "",
     description: "",
     img: "",
   });
@@ -40,11 +41,9 @@ const Products = () => {
     alert.showSuccessAlert("item removed successfully!");
   }
   function addItem(data) {
-    if(!TData.img)
-    {
+    if (!TData.img) {
       alert.showErrorAlert("Please upload image");
       return;
-     
     }
     adminServices
       .addProduct(data)
@@ -68,12 +67,16 @@ const Products = () => {
       .catch((err) => console.log(err.message));
   }
   function showUpdateTable(item) {
+    window.scrollTo(0, 0);
     const data = {
       id: item._id,
       title: item.title,
       price: item.price,
+      quantity: item.quantity,
       description: item.description,
+      img: item.img,
     };
+    setImgUrl(item.img);
     setTData(data);
     setPressed(true);
     setBtnText("Update");
@@ -143,6 +146,20 @@ const Products = () => {
                 </div>
                 <div class="mb-3 col-lg-9">
                   <label for="exampleInputPassword1" class="form-label">
+                    Medicine Quantity
+                  </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    value={TData.quantity}
+                    onChange={(e) => handleData("quantity", e.target.value)}
+                    required
+                  />
+                </div>
+                <div class="mb-3 col-lg-9">
+                  <label for="exampleInputPassword1" class="form-label">
                     Medicine Price
                   </label>
                   <input
@@ -168,7 +185,8 @@ const Products = () => {
                     required
                   />
                 </div>
-                <div class="mb-2 col-lg-9">
+
+                <div class="mb-2 col-lg-9" id="imageuploader">
                   <label for="exampleInputPassword1" class="form-label">
                     upload an image
                   </label>
@@ -207,6 +225,7 @@ const Products = () => {
           <tr>
             <th scope="col">Item name</th>
             <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
             <th scope="col">Description</th>
             <th scope="col">Actions</th>
           </tr>
@@ -219,6 +238,7 @@ const Products = () => {
               <tr>
                 <td>{item.title}</td>
                 <td>{item.price}</td>
+                <td>{item.quantity}</td>
                 <td>{item.description}</td>
                 <td>
                   <input
