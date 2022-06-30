@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import adminServices from "../Services/AdminServices";
+import alert from "../Services/Alert";
 const Dashboard = () => {
   let navigate = useNavigate();
   return (
@@ -32,7 +34,12 @@ const Dashboard = () => {
                     </p>
                     <button
                       className="btn btn-primary"
-                      onClick={() => navigate("/doctors")}
+                      onClick={() => {
+                        if (adminServices.isLoggedIn()) navigate("/doctors");
+                        else {
+                          alert.showErrorAlert("you should must login");
+                        }
+                      }}
                     >
                       View
                     </button>
@@ -60,7 +67,13 @@ const Dashboard = () => {
                     </p>
                     <button
                       className="btn btn-primary"
-                      onClick={() => navigate("/respondants")}
+                      onClick={() => {
+                        if (adminServices.isLoggedIn())
+                          navigate("/respondants");
+                        else {
+                          alert.showErrorAlert("you should must login");
+                        }
+                      }}
                     >
                       View
                     </button>
@@ -88,7 +101,12 @@ const Dashboard = () => {
                     </p>
                     <button
                       className="btn btn-primary "
-                      onClick={() => navigate("/customers")}
+                      onClick={() => {
+                        if (adminServices.isLoggedIn()) navigate("/customers");
+                        else {
+                          alert.showErrorAlert("you should must login");
+                        }
+                      }}
                     >
                       View
                     </button>
@@ -116,7 +134,13 @@ const Dashboard = () => {
                     </p>
                     <button
                       className="btn btn-primary"
-                      onClick={() => navigate("/pharmacists")}
+                      onClick={() => {
+                        if (adminServices.isLoggedIn())
+                          navigate("/pharmacists");
+                        else {
+                          alert.showErrorAlert("you should must login");
+                        }
+                      }}
                     >
                       View
                     </button>

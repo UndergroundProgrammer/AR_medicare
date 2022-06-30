@@ -244,7 +244,7 @@ const Products = () => {
                   <input
                     type="button"
                     value="Remove"
-                    className="btn btn-danger me-2 t-buttons"
+                    className="btn btn-danger me-2 t-buttons mb-2"
                     onClick={(e) => removeItem(item._id)}
                   />
                   <input

@@ -52,7 +52,7 @@ function App() {
             path="/customers"
             element={
               <StakeholderMapper
-                method={adminServices.getPharmicst}
+                method={adminServices.getCustomers}
                 dataType={"Customers"}
               />
             }

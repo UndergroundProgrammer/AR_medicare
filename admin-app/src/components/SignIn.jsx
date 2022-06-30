@@ -15,17 +15,16 @@ const SignIn = () => {
     adminServices
       .login(data)
       .then((data) => {
-        debugger
+        debugger;
         if (adminServices.isLoggedIn()) {
           alert.showSuccessAlert("you are logged in successfully!");
           navigate("/dashboard");
           window.location.reload(false);
-
         } else {
           alert.showErrorAlert(data.message);
         }
       })
-      .catch((err) => alert.showErrorAlert(err));
+      .catch((err) => alert.showErrorAlert(err.response.data.message));
   }
   return (
     <section className="login-form shadow-lg">
