@@ -115,40 +115,6 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-5 col-md-6 ">
-            <div class="card my-3 shadow-lg" style={{ maxWidth: "540px" }}>
-              <div className="row align-items-center">
-                <div class="col-4 d-inline">
-                  <img
-                    src="images/pharmicst.jpg"
-                    class="img-fluid rounded-circle"
-                    alt="..."
-                  />
-                </div>
-                <div class="col-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Pharmacist</h5>
-                    <p class="card-text">
-                      This is a wider card with supporting text below as a
-                      natural{" "}
-                    </p>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => {
-                        if (adminServices.isLoggedIn())
-                          navigate("/pharmacists");
-                        else {
-                          alert.showErrorAlert("you should must login");
-                        }
-                      }}
-                    >
-                      View
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
