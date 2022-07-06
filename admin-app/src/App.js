@@ -39,15 +39,7 @@ function App() {
               />
             }
           />
-          <Route
-            path="/pharmacists"
-            element={
-              <StakeholderMapper
-                method={adminServices.getPharmicst}
-                dataType={"Pharmacists"}
-              />
-            }
-          />
+
           <Route
             path="/customers"
             element={
